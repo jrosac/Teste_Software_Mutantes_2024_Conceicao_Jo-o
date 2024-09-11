@@ -111,13 +111,15 @@ def test_overcharging_the_battery_battery(calc):
 
 @pytest.mark.parametrize("given_data,expected_result",
                          [([["1", "2", "3", "4", "5"], ["2", "4", "1", "12"]], [3.0, 4.75]),
-                          ([["1", "2"], ["2", "2", "2"], ["1", "1", "1", "5", "2"]], [1.5, 2.0, 2.0])])
+                          ([["1", "2"], ["2", "2", "2"], ["1", "1", "1", "5", "2"]], [1.5, 2.0, 2.0])]) #alteração feita
 def test_check_avg_file(given_data, expected_result):
     mock = Mock(return_value=given_data)
-
+    
     with patch("calculator.Calculator._get_content", mock):
         calc = Calculator(filename="fake.txt")
+        assert calc is not None #adicionado para matar o teste de mutação       
         assert calc.avg_file() == expected_result
+
 
 
 @pytest.mark.parametrize("given_data,expected_result",
