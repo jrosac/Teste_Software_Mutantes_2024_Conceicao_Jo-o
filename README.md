@@ -1,3 +1,35 @@
+## Requirements
+
++ [Python 3.7+](https://www.python.org/)
++ [python3-venv](https://docs.python.org/3/library/venv.html)
++ requirements.txt
+
+## Installation or Getting Started
+
+Getting started:
+
+sudo apt install python3-venv	
+cd test_electronic_device_calculator.py
+python3 -m venv /cal_python/venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+## Testing
+
+# run tests normally
+pytest -vv  test_electronic_device_calculator.py 
+	
+# perform tests with line (node) coverage report
+pytest -vv  test_electronic_device_calculator.py  --cov=cal
+
+# perform tests with branch coverage report
+pytest -vv  test_electronic_device_calculator.py  --cov=cal  --cov-branch  --cov-report html
+
+# run tests with mutmut
+mutmut run --paths-to-mutate=/home/jrosa/Documentos/UFS/Teste_Software/Teste_Software_Mutantes_2024_Conceicao_Joao/test/test_electronic_device_calculator.py
+
+
+
 # Calculator
 Simple Calculator class with 100% coverage by pytest
 

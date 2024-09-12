@@ -53,7 +53,7 @@ def test_divide_should_raise_value_error(calc):
 
 
 @pytest.mark.parametrize("given_a,given_b,expected_value",
-                         [(20, 10, 2), (-3, 2, -1.50), (-200, -100, 2), (0, -5, -0.0)])
+                         [(20, 10, 2), (-3, 2, -1.50), (-200, -100, 2), (0, -5, -0.0)]) #added test with 0, kill the suspicous test
 def test_check_divide(calc, given_a, given_b, expected_value):
     assert calc.divide(given_a, given_b) == expected_value
 
@@ -108,10 +108,10 @@ def test_overcharging_the_battery_battery(calc):
     # Then
     assert calc.battery == 100
 
-
+#alteração feita
 @pytest.mark.parametrize("given_data,expected_result",
                          [([["1", "2", "3", "4", "5"], ["2", "4", "1", "12"]], [3.0, 4.75]),
-                          ([["1", "2"], ["2", "2", "2"], ["1", "1", "1", "5", "2"]], [1.5, 2.0, 2.0])]) #alteração feita
+                          ([["1", "2"], ["2", "2", "2"], ["1", "1", "1", "5", "2"]], [1.5, 2.0, 2.0])]) 
 def test_check_avg_file(given_data, expected_result):
     mock = Mock(return_value=given_data)
     
@@ -119,8 +119,6 @@ def test_check_avg_file(given_data, expected_result):
         calc = Calculator(filename="fake.txt")
         assert calc is not None #adicionado para matar o teste de mutação       
         assert calc.avg_file() == expected_result
-
-
 
 @pytest.mark.parametrize("given_data,expected_result",
                          [([["1", "3"], ["2", "4", "12"]], [[1.0, 3.0], [2.0, 4.0, 12.0]])])
